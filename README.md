@@ -30,3 +30,4 @@ This project is currently not open to public contributions.
 Any questions, comments, or concerns, please feel free to contact me at:
 * Github: (https://github.com/Tfreed94)
 * Email: tfreedwebdev94@gmail.com
+* Email: (https://tfreed94.github.io/VirtualPortfolio/index.html)
