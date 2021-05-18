@@ -57,3 +57,30 @@ const mainMenu = () => {
             }
         });
 }
+
+const viewAllDepartments = () => {
+    const queryDept = "SELECT * FROM department";
+    connection.query(queryDept, (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        mainMenu();
+    });
+}
+
+const viewAllRoles = () => {
+    const queryRole = "SELECT * FROM role";
+    connection.query(queryRole, (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        mainMenu();
+    });
+}
+
+const viewAllEmployees = () => {
+    let queryEmployee = "SELECT * FROM employee";
+    connection.query(queryEmployee, (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        mainMenu();
+    });
+}
