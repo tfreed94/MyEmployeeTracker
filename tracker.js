@@ -84,3 +84,78 @@ const viewAllEmployees = () => {
         mainMenu();
     });
 }
+
+const addDept = () => {
+    inquirer.prompt({
+        type: "input",
+        message: "Department Name:",
+        name: "addDepartmentName"
+
+    }).then((answer) => {
+        connection.query("INSERT INTO department (name) VALUES (?)", [answer.addDepartmentName], (err, res) => {
+            if (err) throw err;
+            console.table(res)
+            mainMenu()
+        })
+    })
+}
+
+
+const addRole = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Role Name:",
+            name: "addRoleName"
+        },
+        {
+            type: "input",
+            message: "Annual Salary:",
+            name: "addAnnualSalary"
+        },
+        {
+            type: "input",
+            message: "Department ID:",
+            name: "addDepartmentID"
+        }
+    ])
+        .then((answer) => {
+            connection.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", [answer.addRoleName, answer.addAnnualSalary, answer.addDepartmentID], (err, res) => {
+                if (err) throw err;
+                console.table(res);
+                mainMenu();
+            });
+        });
+}
+
+const addEmployee = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Employee first name:",
+            name: "addFirstName"
+        },
+        {
+            type: "input",
+            message: "Employee last name:",
+            name: "addLastName"
+        },
+        {
+            type: "input",
+            message: "Employee role ID number:",
+            name: "addRoleID"
+        },
+        {
+            type: "input",
+            message: "Manager ID number:",
+            name: "addManagerID"
+        }
+    ])
+        .then((answer) => {
+            connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answer.addFirstName, answer.addLastName, answer.addRoleID, answer.addManagerID], (err, res) => {
+                if (err) throw err;
+                console.table(res);
+                mainMenu();
+            });
+        });
+}
