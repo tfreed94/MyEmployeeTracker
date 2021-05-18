@@ -14,3 +14,46 @@ connection.connect((err) => {
     if (err) throw err;
     mainMenu();
 });
+
+const mainMenu = () => {
+    inquirer.prompt({
+        type: "list",
+        choices: [
+            "View departments",
+            "View roles",
+            "View employees",
+            "Add department",
+            "Add role",
+            "Add employee",
+            "Update employee role",
+        ],
+        message: "Choose what you need to do:",
+        name: "choices"
+    })
+        .then((res) => {
+            console.log(res.choices);
+            switch (res.choices) {
+                case "View departments":
+                    viewAllDepartments();
+                    break;
+                case "View roles":
+                    viewAllRoles();
+                    break;
+                case "View employees":
+                    viewAllEmployees();
+                    break;
+                case "Add department":
+                    addDept();
+                    break;
+                case "Add role":
+                    addRole();
+                    break;
+                case "Add employee":
+                    addEmployee();
+                    break;
+                case "Update employee role":
+                    updateEmployeeRoleID();
+                    break;
+            }
+        });
+}
