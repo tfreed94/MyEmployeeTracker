@@ -159,3 +159,34 @@ const addEmployee = () => {
             });
         });
 }
+
+const updateEmployeeRoleID = () => {
+    inquirer.prompt([
+        {
+            name: "id",
+            type: "input",
+            message: "Enter employee id",
+        }
+    ])
+
+        .then((answer) => {
+            const ID = answer.id;
+            inquirer.prompt([
+                {
+                    name: "roleId",
+                    type: "input",
+                    message: "Enter role id",
+                }
+            ])
+
+                .then((answer) => {
+                    const employeeRoleId = answer.roleId;
+                    const query = "UPDATE employee SET role_id=? WHERE id=?";
+                    connection.query(query, [employeeRoleId, ID], (err, res) => {
+                        if (err) throw err;
+                        console.table(res);
+                        mainMenu();
+                    });
+                });
+        });
+}
